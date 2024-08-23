@@ -1,13 +1,30 @@
 import React from 'react'
 
+import { useNavigate , useLocation} from 'react-router-dom';
+
 export default function Navbar() {
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handlerLoginClick = () => {
+    navigate('/login');
+  }
+
+  const handlerRegisterClick = () => {
+    navigate('/register');
+  }
+
+
+
+
   return (
     <div>
 
 
         <nav className="navbar navbar-expand-lg navbar-dark bg-white custom-navbar">
         <div className="container-fluid pe-5">
-            <a className="navbar-brand " href="#" style={{ color: 'black' }}>Payment Portal Full Stack App</a>
+            <a className="navbar-brand " href="/" style={{ color: 'black' }}>Payment Portal Full Stack App</a>
 
             <button 
                 className="navbar-toggler" 
@@ -20,8 +37,14 @@ export default function Navbar() {
             </button>
 
             <div className="d-flex ms-auto pe-5">
-            <button className="btn btn-outline-dark ms-2 custom-buttons-navbar" style={{ color: 'black' }}>Register</button>
-            <button className="btn btn-outline-dark ms-3 custom-buttons-navbar" style={{ color: 'black' }}>Login</button>
+            {location.pathname !== '/dashboard' ? (
+              <>
+              <button className="btn btn-outline-dark ms-2 custom-buttons-navbar" style={{ color: 'black' }} onClick={handlerRegisterClick}>Register</button>
+              <button className="btn btn-outline-dark ms-3 custom-buttons-navbar" style={{ color: 'black' }} onClick={handlerLoginClick}>Login</button>
+              </>
+            ) : (
+              <button className="btn btn-outline-dark ms-3 custom-buttons-navbar" style={{ color: 'black' }}>Profile</button> 
+            )}
             </div>
         </div>
         </nav>

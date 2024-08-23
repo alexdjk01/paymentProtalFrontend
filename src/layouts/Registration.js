@@ -1,7 +1,19 @@
 import React from 'react'
-
+import { useNavigate } from 'react-router-dom';
 
 export default function Registration() {
+
+    const navigate = useNavigate();
+
+    const handerBackClick = () => {
+        navigate('/')
+    }
+
+    const handerSaveClick = () =>{
+        //AXIOS we need to register the user into the SpringBoot DATABASE
+    }
+
+
   return (
     <div>
         <section class="vh-100 custom-container d-flex justify-content-center align-items-center">
@@ -97,8 +109,8 @@ export default function Registration() {
 
 
                                 <div class="d-flex justify-content-center">
-                                    <button type="reset" class="btn btn-danger btn-lg me-2">Back</button>
-                                    <button type="submit" class="btn btn-success btn-lg">Save</button>
+                                    <button type="reset" class="btn btn-danger btn-lg me-2" onClick={handerBackClick}>Back</button>
+                                    <button type="submit" class="btn btn-success btn-lg" onClick={handerSaveClick}>Save</button>
                                 </div>
 
 

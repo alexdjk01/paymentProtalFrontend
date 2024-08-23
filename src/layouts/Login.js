@@ -1,6 +1,18 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 
 export default function Login() {
+
+    const navigate = useNavigate();
+
+    const handlerBackClick = () =>{
+        navigate("/");
+    }
+
+    const handlerLoginClick = () =>{
+        //AXIOS
+    }
+
   return (
     <div>
         <section class="vh-100 custom-container d-flex justify-content-center align-items-center">
@@ -27,8 +39,8 @@ export default function Login() {
 
 
                                     <div class="d-flex justify-content-center">
-                                        <button type="reset" class="btn btn-danger btn-lg me-2">Back</button>
-                                        <button type="submit" class="btn btn-success btn-lg">Login</button>
+                                        <button type="reset" class="btn btn-danger btn-lg me-2" onClick={handlerBackClick}>Back</button>
+                                        <button type="submit" class="btn btn-success btn-lg" onClick={handlerLoginClick}>Login</button>
                                     </div>
                                 
 

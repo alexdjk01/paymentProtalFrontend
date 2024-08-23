@@ -36,3 +36,12 @@
     font-size: 1.1rem; /* Font size */
     font-weight: bold;
 }
+
+.custom-container-start-page{
+    margin-top: 30px; /* Changed from dp to px */
+    padding-bottom: 20px;
+    padding-top: 20px;
+    width: 50%; /* Set width to 50% of the viewport or another value */
+    text-align: center;
+    background-color: blue;
+}
