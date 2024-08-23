@@ -8,3 +8,31 @@
     border-radius: 8px; /* Optional: Adds rounded corners */
     padding: 20px;
 }
+
+.custom-navbar{
+    border-bottom: 2px solid black;
+    font-weight: bold;
+}
+
+.custom-buttons-navbar{
+    font-weight: bold;
+}
+
+.custom-buttons-navbar:hover {
+    background-color: rgb(144, 205, 233); 
+    color: black; 
+    border-color: rgb(144, 205, 233); 
+  }
+
+.custom-h1-start-page{
+    color: black; /* Text color */
+  font-size: 3rem; /* Font size */
+  font-weight: bold; /* Bold text */
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
+.custom-text-start-page{
+
+    font-size: 1.1rem; /* Font size */
+    font-weight: bold;
+}

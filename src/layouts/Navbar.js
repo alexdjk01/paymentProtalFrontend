@@ -5,9 +5,9 @@ export default function Navbar() {
     <div>
 
 
-        <nav className="navbar navbar-expand-lg navbar-dark bg-info">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-white custom-navbar">
         <div className="container-fluid pe-5">
-            <a className="navbar-brand" href="#">Payment Portal Full Stack App</a>
+            <a className="navbar-brand " href="#" style={{ color: 'black' }}>Payment Portal Full Stack App</a>
 
             <button 
                 className="navbar-toggler" 
@@ -20,8 +20,8 @@ export default function Navbar() {
             </button>
 
             <div className="d-flex ms-auto pe-5">
-            <button className="btn btn-outline-light ms-2">Register</button>
-            <button className="btn btn-outline-light ms-3">Login</button>
+            <button className="btn btn-outline-dark ms-2 custom-buttons-navbar" style={{ color: 'black' }}>Register</button>
+            <button className="btn btn-outline-dark ms-3 custom-buttons-navbar" style={{ color: 'black' }}>Login</button>
             </div>
         </div>
         </nav>
