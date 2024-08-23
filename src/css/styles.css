@@ -1,0 +1,10 @@
+.custom-container{
+    background-color: #f7e2e2;
+}
+
+.custom-card-form{
+    background-color: #f3f7f8 ;
+    box-shadow: 0px 3px 8px rgba(79, 79, 80, 0.9); /* Shadow with horizontal offset, vertical offset, blur radius, and color */
+    border-radius: 8px; /* Optional: Adds rounded corners */
+    padding: 20px;
+}
