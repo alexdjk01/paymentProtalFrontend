@@ -20,7 +20,7 @@ export default function Login() {
                 <div class="row justify-content-center">
                     <div class="col-md-4">
                         <div class="card card-registration ">
-                            <div class="card-body p-md-5 text-black custom-card-form">
+                            <div class="card-body p-md-4 text-black custom-card-form">
                                 <h3 class="mb-5 text-uppercase text-center">Login</h3>
 
                                 

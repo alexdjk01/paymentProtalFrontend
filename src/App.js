@@ -6,10 +6,15 @@ import Registration from './layouts/Registration';
 import './css/styles.css'
 import Login from './layouts/Login';
 import StartPage from './pages/StartPage';
+import Dashboard from './layouts/Dashboard';
+
+// REgistration is registering the user into the postgres BD and redirects after save to Login.
+
 
 function App() {
   return (
     <div className='App'>
+
       
       <Router>
         <Navbar/>
@@ -18,6 +23,7 @@ function App() {
           <Route path="/" element={<StartPage />} />
           <Route path="/register" element={<Registration />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </div>
     </Router>
