@@ -1,0 +1,252 @@
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+
+export default function Registration() {
+
+
+    const [user,setUser] = useState({
+        firstName:"",
+        lastName:"",
+        email:"",
+        password:"",
+        streetName:"",
+        streetNo:"",
+        flatNo:"",
+        apartmentNo:"",
+        locality:""
+    });
+
+    const [errors, setErrors] = useState({});
+
+    const{firstName,lastName , email, password,streetName,streetNo,flatNo,apartmentNo,locality}=user
+
+    const navigate = useNavigate();
+
+    const onInputChange = (e) => {
+        setUser({ ...user, [e.target.name]: e.target.value });
+    };
+
+    const handerBackClick = () => {
+        navigate('/');
+    };
+
+    const validateForm = () => {
+        let fieldsErrors = {};
+        // name validation
+        if(!firstName.trim())
+        {
+            fieldsErrors.firstName = "The first name is required!";
+        }
+        if(!lastName.trim())
+        {
+            fieldsErrors.lastName = "The last name is required!";
+        }
+        //email validation
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if(!email.trim())
+        {
+            fieldsErrors.email = "Email is required!";
+        } else if (!emailPattern.test(email))
+        {
+            fieldsErrors.email = "Email is invalid!";
+        }
+        //password validation
+        if(!password.trim())
+        {
+            fieldsErrors.password = "Password is required!";
+        } else if (password.length < 6){
+            fieldsErrors.password = "Minimum length allowed is 6 characters!";
+        }
+        //address validation
+        if(!streetName.trim())
+        {
+            fieldsErrors.streetName = "Name of the street is required!";
+        }
+        if(locality === "")
+        {
+                fieldsErrors.locality = "Input a locality!";
+        }
+        if(!streetNo.trim())
+        {
+                fieldsErrors.streetNo = " Street number required!";
+        }else if (streetNo <0)
+        {
+                fieldsErrors.streetNo = "Input a positive address number!"
+        }
+        if(!flatNo.trim())
+        {
+                fieldsErrors.flatNo = "Flat number required!";
+        }else if (flatNo <0)
+        {
+                fieldsErrors.flatNo = "Input a positive flat number!"
+        }
+        if(!apartmentNo.trim())
+        {
+                fieldsErrors.apartmentNo = "Apartment number required!";
+        }else if (apartmentNo <0)
+        {
+                fieldsErrors.apartmentNo = "Input a positive apartment number!"
+        } 
+
+        setErrors(fieldsErrors)
+        // returns true if there are no errors:
+        return Object.keys(fieldsErrors).length ===0;
+    }
+
+    const handerSaveClick = async (e) =>{
+        e.preventDefault();
+        const fullName = `${firstName} ${lastName}`;
+        const address = `Loc: ${locality}, Str: ${streetName}, Street: ${streetNo}, Flat: ${flatNo}, Ap: ${apartmentNo}`;
+
+        //Object suitable for backend REST API
+        const userRegistered = {
+            fullName,
+            address,
+            email,
+            password
+        }
+
+        //Validations for registration form
+
+        let formValidated =validateForm();
+        if(formValidated)
+        {
+            console.log("Trying to save user...");
+            try{
+                const userResult = await axios.post("http://localhost:8080/users", userRegistered);
+                console.log("User saved:", userResult.data);
+            }catch(err)
+            {
+                console.error("Error while saving the user!", err);
+            }
+    
+            navigate('/login');
+        }
+        else
+        {
+            console.log("Cannot validate the credentials! Try again with good credentials!");
+        }
+
+        
+        
+    }
+
+  return (
+    <div>
+        <section className="vh-100 custom-container d-flex justify-content-center align-items-center">
+            <div className="container py-5 custom-container">
+                <div className="row justify-content-center">
+                    <div className="col-md-6">
+                        <div className="card card-registration ">
+                            <div className="card-body p-md-4 text-black custom-card-form">
+                                <h3 className="mb-4 text-uppercase text-center">Register</h3>
+
+
+                                <div className="row">
+                                    <div className="col-md-6 mb-4">
+                                        <div className="form-outline">
+                                                <label className="form-label" for="firstName">First name</label>
+                                                <input type="text" id="firstNameInput" className="form-control form-control-md" placeholder="Enter first name" name="firstName" value={firstName} onChange={onInputChange}/>
+                                                {errors.firstName && <small className='text-danger'>{errors.firstName}</small>}
+                                        </div>
+                                    </div>
+                                    <div className="col-md-6 mb-4">
+                                        <div className="form-outline">
+                                            <label className="form-label" for="lastName" >Last name</label>
+                                            <input type="text" id="lastNameInput" className="form-control form-control-md" placeholder="Enter last name" name="lastName" value={lastName} onChange={onInputChange}/>
+                                            {errors.lastName && <small className='text-danger'>{errors.lastName}</small>}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="row">
+                                    <div className="col-md-7 mb-4">
+                                        <div className="form-outline">
+                                                <label className="form-label" for="email">Email</label>
+                                                <input type="email" id="emailInput" className="form-control form-control-md" placeholder="Enter email" name="email" value={email} onChange={onInputChange}/>
+                                                {errors.email && <small className='text-danger'>{errors.email}</small>}
+                                        </div>
+                                    </div>
+                                    <div className="col-md-5 mb-4">
+                                        <div className="form-outline">
+                                            <label className="form-label" for="password">Password</label>
+                                            <input type="password" id="passwordInput" className="form-control form-control-md" placeholder="Enter password" name="password" value={password} onChange={onInputChange}/>
+                                            {errors.password && <small className='text-danger'>{errors.password}</small>}
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div className="row">
+
+                                    <div className="col-md-7 mb-4">
+                                        <div className="form-outline">
+                                            <label className="form-label" for="streetName">Street Name</label>
+                                            <input type="text" id="streetNameInput" className="form-control form-control-md" placeholder="Enter street name"  name="streetName" value={streetName} onChange={onInputChange}/>
+                                            {errors.streetName && <small className='text-danger'>{errors.streetName}</small>}
+                                        </div>
+                                    </div>
+
+                                    <div className="col-md-5 mb-4">
+                                        <label className="form-label" for="locality">Locality</label>
+                                        <select className="form-select" id="localityInput" name="locality" value={locality} onChange={onInputChange}>
+                                            <option value="">Select Locality</option>
+                                            <option value="Bucuresti S1">Bucuresti S1</option>
+                                            <option value="Bucuresti S2">Bucuresti S2</option>
+                                            <option value="Bucuresti S3">Bucuresti S3</option>
+                                            <option value="Bucuresti S4">Bucuresti S4</option>
+                                            <option value="Bucuresti S5">Bucuresti S5</option>
+                                            <option value="Bucuresti S6">Bucuresti S6</option>
+                                            <option value="Ploiesti">Ploiesti</option>
+                                            <option value="Cluj">Cluj</option>
+                                            
+                                        </select>
+                                        {errors.locality && <small className='text-danger'>{errors.locality}</small>}
+                                    </div>
+                            
+                                </div>
+
+
+
+                                <div className="row">
+                                    <div className="col-md-4 mb-4">
+                                        <div className="form-outline">
+                                                <label className="form-label" for="streetNo">Street No.</label>
+                                                <input type="number" id="streetNumberInput" className="form-control form-control-md" placeholder="Enter Street No." name="streetNo" value={streetNo} onChange={onInputChange}/>
+                                                {errors.streetNo && <small className='text-danger'>{errors.streetNo}</small>}
+                                        </div>
+                                    </div>
+                                    <div className="col-md-4 mb-4">
+                                        <div className="form-outline">
+                                            <label className="form-label" for="flatNo">Flat No.</label>
+                                            <input type="number" id="flatNumberInput" className="form-control form-control-md" placeholder="Enter Flat No." name="flatNo" value={flatNo} onChange={onInputChange}/>
+                                            {errors.flatNo && <small className='text-danger'>{errors.flatNo}</small>}
+                                        </div>
+                                    </div>
+
+                                    <div className="col-md-4 mb-4">
+                                        <div className="form-outline">
+                                            <label className="form-label" for="apartmentNo">Apartment No.</label>
+                                            <input type="number" id="apartmentNumberInput" className="form-control form-control-md" placeholder="Enter Apartment No." name="apartmentNo" value={apartmentNo} onChange={onInputChange}/>
+                                            {errors.apartmentNo && <small className='text-danger'>{errors.apartmentNo}</small>}
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div className="d-flex justify-content-center">
+                                    <button type="reset" className="btn btn-danger btn-lg me-2" onClick={handerBackClick}>Back</button>
+                                    <button type="submit" className="btn btn-success btn-lg" onClick={handerSaveClick}>Save</button>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+  )
+}

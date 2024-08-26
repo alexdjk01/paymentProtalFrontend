@@ -1,4 +1,5 @@
 import React from 'react'
+import { useAuth } from '../contexts/Authentification';
 
 import { useNavigate , useLocation} from 'react-router-dom';
 
@@ -6,6 +7,7 @@ export default function Navbar() {
 
   const navigate = useNavigate();
   const location = useLocation();
+  const {logout} =useAuth();
 
   const handlerLoginClick = () => {
     navigate('/login');
@@ -15,6 +17,14 @@ export default function Navbar() {
     navigate('/register');
   }
 
+  const handlerProfileClick = () => {
+    navigate('/profile');
+  }
+
+  const handlerLogoutClick = () => {
+    logout();
+    navigate('/');
+  }
 
 
 
@@ -37,13 +47,16 @@ export default function Navbar() {
             </button>
 
             <div className="d-flex ms-auto pe-5">
-            {location.pathname !== '/dashboard' ? (
+            {(location.pathname !== '/dashboard' && location.pathname!=='/dashboardAdmin') ? (
               <>
               <button className="btn btn-outline-dark ms-2 custom-buttons-navbar" style={{ color: 'black' }} onClick={handlerRegisterClick}>Register</button>
               <button className="btn btn-outline-dark ms-3 custom-buttons-navbar" style={{ color: 'black' }} onClick={handlerLoginClick}>Login</button>
               </>
             ) : (
-              <button className="btn btn-outline-dark ms-3 custom-buttons-navbar" style={{ color: 'black' }}>Profile</button> 
+              <>
+              <button className="btn btn-outline-dark ms-3 custom-buttons-navbar" style={{ color: 'black' }} onClick={handlerProfileClick}>Profile</button> 
+              <button className="btn btn-outline-dark ms-3 custom-buttons-navbar" style={{ color: 'black' }} onClick={handlerLogoutClick}>Logout</button> 
+              </>
             )}
             </div>
         </div>
