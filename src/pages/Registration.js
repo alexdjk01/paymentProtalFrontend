@@ -11,7 +11,6 @@ export default function Registration() {
         email:"",
         password:"",
         streetName:"",
-        streetNo:"",
         flatNo:"",
         apartmentNo:"",
         locality:""
@@ -19,7 +18,7 @@ export default function Registration() {
 
     const [errors, setErrors] = useState({});
 
-    const{firstName,lastName , email, password,streetName,streetNo,flatNo,apartmentNo,locality}=user
+    const{firstName,lastName , email, password,streetName,flatNo,apartmentNo,locality}=user
 
     const navigate = useNavigate();
 
@@ -67,13 +66,6 @@ export default function Registration() {
         {
                 fieldsErrors.locality = "Input a locality!";
         }
-        if(!streetNo.trim())
-        {
-                fieldsErrors.streetNo = " Street number required!";
-        }else if (streetNo <0)
-        {
-                fieldsErrors.streetNo = "Input a positive address number!"
-        }
         if(!flatNo.trim())
         {
                 fieldsErrors.flatNo = "Flat number required!";
@@ -97,7 +89,7 @@ export default function Registration() {
     const handerSaveClick = async (e) =>{
         e.preventDefault();
         const fullName = `${firstName} ${lastName}`;
-        const address = `Loc: ${locality}, Str: ${streetName}, Street: ${streetNo}, Flat: ${flatNo}, Ap: ${apartmentNo}`;
+        const address = `Loc: ${locality}, Str: ${streetName}, Flat: ${flatNo}, Ap: ${apartmentNo}`;
 
         //Object suitable for backend REST API
         const userRegistered = {
@@ -209,14 +201,7 @@ export default function Registration() {
 
 
 
-                                <div className="row">
-                                    <div className="col-md-4 mb-4">
-                                        <div className="form-outline">
-                                                <label className="form-label" for="streetNo">Street No.</label>
-                                                <input type="number" id="streetNumberInput" className="form-control form-control-md" placeholder="Enter Street No." name="streetNo" value={streetNo} onChange={onInputChange}/>
-                                                {errors.streetNo && <small className='text-danger'>{errors.streetNo}</small>}
-                                        </div>
-                                    </div>
+                                <div className="row justify-content-center">
                                     <div className="col-md-4 mb-4">
                                         <div className="form-outline">
                                             <label className="form-label" for="flatNo">Flat No.</label>
