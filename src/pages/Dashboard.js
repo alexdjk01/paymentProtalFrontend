@@ -98,9 +98,9 @@ export default function Dashboard() {
  
   return (
     <div>
-       <h1>Welcome, {userAuth.fullName} || ROLE: REGULAR USER</h1>
+       <h5>Welcome back, {userAuth.fullName}</h5>
 
-       <div className="d-flex justify-content-center mb-5">
+       <div className="d-flex justify-content-center mb-2 mt-4">
                 <button type="submit" className="btn btn-primary btn-lg me-2" onClick={handlerHistoryInvoices}>Past Invoices</button>
                 <button type="submit" className="btn btn-primary btn-lg" onClick={handlerCurrentInvoice}>Current Invoice</button>
         </div>
@@ -115,11 +115,17 @@ export default function Dashboard() {
         )}
 
         {showHistory && (
-         <div>
-            {historyInvoices.map((invoice) => (
-              <InvoiceCard key={invoice.id} invoice={invoice} />
-            ))}
-          </div>
+         <div className="d-flex flex-wrap ">
+         {historyInvoices.map((invoice, index) => (
+           <div
+             className="invoice-card-container"
+             key={invoice.id}
+             style={{ flex: '0 0 50%', maxWidth: '50%' }}
+           >
+             <InvoiceCard invoice={invoice} />
+           </div>
+         ))}
+       </div>
         )}
     </div>
   )

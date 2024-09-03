@@ -10,6 +10,7 @@ export default function DashboardAdmin() {
     const navigate = useNavigate();
     const [showInvoiceGenerator, setShowInvoiceGenerator] = useState(false);
     const [showAdjustPrices, setShowAdjustPrices] = useState(false);
+    const [showControlPanel, setShowControlPanel] = useState(true);
     const [showNumberOfApartments , setShowNumberOfApartments] = useState("");
 
     const [invoice,setInvoice] = useState({
@@ -236,28 +237,95 @@ export default function DashboardAdmin() {
                 console.error("Invoice can't be saved! ", err);
             }
             
+            alert("Invoice was generated!");
         }
     }
 
   return (
     <div>
-       <h1>Welcome , {userAuth.fullName} || ROLE: ADMIN</h1>
-       <h5>Eligible addresses: Loc: {userAuth.city}, Streets: {userAuth.streets}, Flats-MaxApartment {userAuth.flats} </h5>
+        {showControlPanel &&(
+            <div>
+                <div className='custom-container-admin-credentials'>
+                    <div className='row'>
+                        <div className='col-md-4'>
+                            <div className='text-start '>
+                                <p>Welcome, {userAuth.fullName} your role is: ADMIN</p>
+                            </div>
+                        </div>
+                    
+                    
+                        <div className='col-md-8'>
+                            <div className='text-start custom-container-admin-credentials-address '>
+                                <p>Access zone: Loc: {userAuth.city} || Streets: {userAuth.streets} || Flats-No. Apartments: {userAuth.flats}  </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+       
 
-       <div className="d-flex justify-content-center mb-5">
-                <button type="submit" className="btn btn-primary btn-lg me-2" onClick={handlerAdjsutPricesClick}>Adjust Prices</button>
-                <button type="submit" className="btn btn-primary btn-lg" onClick={handlerGenerateInvoicesClick}>Generate Invoices</button>
-        </div>
+                <div className="d-flex justify-content-center">
+                        <button type="submit" className="btn btn-primary btn-lg me-2" onClick={handlerAdjsutPricesClick}>Adjust Prices</button>
+                        <button type="submit" className="btn btn-primary btn-lg" onClick={handlerGenerateInvoicesClick}>Generate Invoices</button>
+                </div>
+            </div>
+
+            
+        )}
+        
 
         {showInvoiceGenerator && (
-        <section className="vh-100 custom-container d-flex justify-content-center align-items-center">
+        <section className="custom-container">
                 <div className="container py-5 custom-container">
                     <div className="row justify-content-center">
-                        <div className="col-md-5">
+                        <div className="col-md-4">
                             <div className="card card-registration ">
                                 <div className="card-body p-md-4 text-black custom-card-form">
                                     <h3 className="mb-4 text-uppercase text-center">Invoice Generator</h3>
-                                    <div className="mb-4">
+                                    <div className="mb-3">
+                                    <div className='row justify-content-center'>
+                                        <div className="col-md-10 mb-3">
+                                            <label className="form-label h6" for="streets">Street</label>
+                                            <select className="form-select" id="streetInput" name="streets" value={streetSelected} onChange={onInputChangeStreets}>
+                                                <option value="">Select Street</option>
+                                                {streets.map((street,index) =>(
+                                                    <option key={index} value={street}>
+                                                        {street}
+                                                    </option>
+                                                ))}
+
+                                            </select>
+                                            {errors.streetSelected && <small className='text-danger'>{errors.streetSelected}</small>}
+                                        </div>
+
+                                        <div className="col-md-5">
+                                            <label className="form-label h6" for="flats">Flat</label>
+                                            <select className="form-select" id="flatInput" name="flats" value={flatSelected} onChange={onInputChangeFlats}>
+                                                <option value="">Select Flat</option>
+                                                {flats.map((flat,index)  =>(
+                                                    <option key={index} value={flat}>
+                                                        {flat}
+                                                    </option>
+                                                ))}
+
+                                            </select>
+                                            {errors.flatSelected && <small className='text-danger'>{errors.flatSelected}</small>}
+                                        </div>
+
+                                        <div className="col-md-5 ">
+                                            <div className="form-outline">
+                                                <label className="form-label h6" htmlFor="apartments" >Apartment</label>
+                                                <input type="number" id="apartmentsInput" className="form-control form-control-md"  name="apartments" value={apartmentSelected} onChange={onInputChangeApartments} min="0" />
+                                                {errors.apartmentSelected && <small className='text-danger'>{errors.apartmentSelected}</small>}
+                                            </div>
+                                        </div>
+
+                                        {showNumberOfApartments && (
+                                        <p className='mt-2'>Flat {flatSelected} has a total number of {showNumberOfApartments} apartments</p>
+                                        )}
+                                    
+
+                                    </div>
+
                                         <div className="form-outline px-5">
                                                 <label className="form-label h6" htmlFor="waterConsumption">Water Consumption</label>
                                                 <input type="number" id="waterConsumptionInput" className="form-control form-control-md" placeholder="Amount" name="waterConsumption" value={waterConsumption} onChange={onInputChangeInvoice}  min="0"/>
@@ -266,7 +334,9 @@ export default function DashboardAdmin() {
                                         </div>
                                     </div>
 
-                                    <div className=" mb-4">
+                                    
+
+                                    <div className=" mb-3">
                                         <div className="form-outline px-5 ">
                                                 <label className="form-label h6" htmlFor="energyConsumption">Energy Consumption</label>
                                                 <input type="number" id="energyConsumptionInput" className="form-control form-control-md" placeholder="Amount" name="energyConsumption" value={energyConsumption} onChange={onInputChangeInvoice}  min="0"/>                                       
@@ -285,7 +355,7 @@ export default function DashboardAdmin() {
                                     </div>
 
                                     <div className="row justify-content-center mb-4">
-                                        <div className="col-md-4 ">
+                                        <div className="col-md-5 ">
                                                 <div className="form-outline">
                                                 <label className="form-label h6" htmlFor="startBillingPeriod" >Start Billing Period</label>
                                                 <input type="date" id="startBillingPeriodInput" className="form-control form-control-md"  name="startBillingPeriod" value={startBillingPeriod} onChange={onInputChangeInvoice} />
@@ -293,7 +363,7 @@ export default function DashboardAdmin() {
                                             </div>
                                         </div>
 
-                                        <div className="col-md-4 ">
+                                        <div className="col-md-5 ">
                                             <div className="form-outline">
                                                 <label className="form-label h6" htmlFor="endBillingPeriod" >End Billing Period</label>
                                                 <input type="date" id="endBillingPeriodInput" className="form-control form-control-md"  name="endBillingPeriod" value={endBillingPeriod} onChange={onInputChangeInvoice} />
@@ -302,49 +372,6 @@ export default function DashboardAdmin() {
                                         </div>
                                 
                                     </div>
-
-                                    <div className='row justify-content-center mb-4'>
-                                        <div className="col-md-6">
-                                            <label className="form-label h6" for="streets">Street</label>
-                                            <select className="form-select" id="streetInput" name="streets" value={streetSelected} onChange={onInputChangeStreets}>
-                                                <option value="">Select Street</option>
-                                                {streets.map((street,index) =>(
-                                                    <option key={index} value={street}>
-                                                        {street}
-                                                    </option>
-                                                ))}
-
-                                            </select>
-                                            {errors.streetSelected && <small className='text-danger'>{errors.streetSelected}</small>}
-                                        </div>
-
-                                        <div className="col-md-3">
-                                            <label className="form-label h6" for="flats">Flat</label>
-                                            <select className="form-select" id="flatInput" name="flats" value={flatSelected} onChange={onInputChangeFlats}>
-                                                <option value="">Select Flat</option>
-                                                {flats.map((flat,index)  =>(
-                                                    <option key={index} value={flat}>
-                                                        {flat}
-                                                    </option>
-                                                ))}
-
-                                            </select>
-                                            {errors.flatSelected && <small className='text-danger'>{errors.flatSelected}</small>}
-                                        </div>
-
-                                        <div className="col-md-3 ">
-                                            <div className="form-outline">
-                                                <label className="form-label h6" htmlFor="apartments" >Apartment</label>
-                                                <input type="number" id="apartmentsInput" className="form-control form-control-md"  name="apartments" value={apartmentSelected} onChange={onInputChangeApartments} min="0" />
-                                                {errors.apartmentSelected && <small className='text-danger'>{errors.apartmentSelected}</small>}
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    {showNumberOfApartments && (
-                                        <p>Flat {flatSelected} has a total number of {showNumberOfApartments} apartments</p>
-                                    )}
-                                    
                                                                             
                                     <div className="d-flex justify-content-center">
                                         <button type="submit" className="btn btn-primary btn-lg" onClick={handlerGenerateInvoiceClick}>Generate</button>
@@ -358,17 +385,14 @@ export default function DashboardAdmin() {
         )}
 
         {showAdjustPrices && (
-            <section className="vh-100 custom-container d-flex justify-content-center align-items-center">
+            <section className="custom-container ">
             <div className="container py-5 custom-container">
                 <div className="row justify-content-center">
-                    <div className="col-md-4">
+                    <div className="col-md-3">
                         <div className="card card-registration ">
                             <div className="card-body p-md-4 text-black custom-card-form">
                                 <h3 className="mb-4 text-uppercase text-center">Price Adjuster</h3>
-
-
-                                
-                                        <div className=" mb-4">
+                                        <div className=" mb-2">
                                             <div className="form-outline px-5">
                                                     <label className="form-label h6" htmlFor="waterConsumption">Water Price</label>
                                                     <input type="number" id="waterPriceInput" className="form-control form-control-md" placeholder="Amount" name="waterPriceAdjust" value={utilityPrices.waterPriceAdjust|| 0} onChange={onInputChangeUtility} min="0"/>
@@ -376,7 +400,7 @@ export default function DashboardAdmin() {
                                             </div>
                                         </div>
 
-                                        <div className=" mb-4">
+                                        <div className=" mb-2">
                                             <div className="form-outline px-5">
                                                     <label className="form-label h6" htmlFor="energyConsumption">Energy Price</label>
                                                     <input type="number" id="energyPriceInput" className="form-control form-control-md" placeholder="Amount" name="electricityPriceAdjust" value={utilityPrices.electricityPriceAdjust|| 0} onChange={onInputChangeUtility} min="0"/>

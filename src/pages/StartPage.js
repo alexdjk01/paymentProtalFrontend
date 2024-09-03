@@ -20,13 +20,32 @@ export default function StartPage() {
 
 
     <div>
-      <h1 className="display-5 mt-5 mb-5 custom-h1-start-page">Welcome to Portal Payment Application</h1>
-      <div className="container custom-container-start-page">
-        <p className='custom-text-start-page'>Login or Register into the application in order to manage your utility payments</p>
+      <h1 className="display-5 mt-5 mb-5 custom-h1-start-page">Welcome to Payment Portal</h1>
+      <div className="container-fluid custom-container-start-page">
+        <p className='custom-text-start-page'>Activate your account now and save time! </p>
+        <p className='custom-secondary-text-start-page'>Enjoy instant payments for your everyday utilities in only a couple of seconds.</p>
+        <p className='custom-secondary-text-start-page'>Manage your water, electricity and gas bills in one go!</p>
 
-          <div class="d-flex justify-content-center">
-              <button type="submit" class="btn btn-danger btn-lg me-2" onClick={handlerRegisterClick}>Register</button>
-              <button type="submit" class="btn btn-success btn-lg me-2" onClick={handlerLoginClick}>Login</button>
+          <div class="container custom-buttons-startPage-image">
+            <div className='row'>
+              <div className='col-md-12'>
+                <button type="submit" class="btn btn-success btn-lg custom-create-account-button " onClick={handlerRegisterClick}>Create account</button>
+              </div>
+            </div>
+            <div className='row'>
+              <div className='col-md-12 mx-1'>
+                <p> Already have an account? Click {' '} 
+                  <span 
+                    className="text" 
+                    style={{ cursor: 'pointer', color: 'blue', fontWeight: 'bold', textDecoration: 'none'  }} 
+                    onClick={handlerLoginClick}
+                  >
+                  here  
+                  </span>{' '}
+                  to login!
+                </p>
+                </div>
+            </div>
           </div>
       </div>
       

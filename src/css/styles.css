@@ -1,55 +1,95 @@
 .custom-container{
-    background-color: #f7e2e2;
+    background-color: #fff;
+}
+
+.custom-register-img{
+    height: 500px;
+}
+
+.custom-login-img{
+    height: 470px;
+    width: 600px;
 }
 
 .custom-card-form{
-    background-color: #f3f7f8 ;
+    background-color:#ffe06b ;
     box-shadow: 0px 3px 8px rgba(79, 79, 80, 0.9); /* Shadow with horizontal offset, vertical offset, blur radius, and color */
     border-radius: 8px; /* Optional: Adds rounded corners */
     padding: 20px;
 }
 
 .custom-navbar{
-    border-bottom: 2px solid black;
+    border-bottom: 3px solid #ffe06b;
     font-weight: bold;
+    height: 100px;
 }
 
 .custom-buttons-navbar{
-    font-weight: bold;
+    font-size: large;
+    width: 100px;
+    border-color:#ffe06b; 
+    background-color: #ffe06b;
 }
 
 .custom-buttons-navbar:hover {
-    background-color: rgb(144, 205, 233); 
-    color: black; 
-    border-color: rgb(144, 205, 233); 
+    background-color: #7193FF;
+    border-color:#7193FF; 
   }
 
 .custom-h1-start-page{
     color: black; /* Text color */
-  font-size: 3rem; /* Font size */
-  font-weight: bold; /* Bold text */
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+    font-size: 3rem; /* Font size */
+    font-weight: bold; /* Bold text */
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: left;
+    margin-left: 80px;
 }
 
 .custom-text-start-page{
 
-    font-size: 1.1rem; /* Font size */
+    font-size: 2.0rem; /* Font size */
     font-weight: bold;
+    color: #fff;
+    text-align: left;
+}
+
+.custom-secondary-text-start-page{
+    font-size: 1.3rem; /* Font size */
+    color: #000;
+    text-align: left;
+
+}
+
+.custom-buttons-startPage-image{
+    text-align: left;
+    margin-top: 50px;
+    margin-left: -15px;
+    
+}
+
+.custom-create-account-button{
+    background-color:#7193FF;
+    border-color: #7193FF;
+    /* #085c4c */
 }
 
 .custom-container-start-page{
-    margin-top: 30px; /* Changed from dp to px */
     padding-bottom: 20px;
-    padding-top: 20px;
-    width: 50%; /* Set width to 50% of the viewport or another value */
+    padding-top: 40px;
+    padding-left: 100px;
+    width:100vw;
+    height: 430px;
     text-align: center;
-    background-color: blue;
+    background-image: url('../images/startPageImagev3.jpg'); /* Replace with your image URL */
+    background-size: cover; /* Makes the background image cover the entire container */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
 }
 
 .custom-card
 {
-    width: 600px;
-    background-color: rgb(255, 207, 207);
+    width: 500px;
+    background-color: #ffe06b;
 }
 
 
@@ -57,3 +97,30 @@
 {
     font-size: x-small;
 }
+
+.custom-container-admin-credentials{
+    width:98vw;
+    border-bottom: 3px solid #ffe06b;
+    color:black;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-left: 30px;
+}
+
+.custom-container-admin-credentials-address{
+    margin-left: -90px;
+}
+
+.custom-margin-top-minus-15px{
+    margin-top: -15px;
+}
+
+.custom-margin-top-minus-10px{
+    margin-top: -10px;
+}
+
+.invoice-card-container {
+    padding: 0.5rem; 
+    margin-right: -190px;
+    margin-left: 70px;
+  }

@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/Authentification';
+import myImage from '../images/loginImage.jpg'
 
 export default function Login() {
 
@@ -123,12 +124,16 @@ export default function Login() {
 
   return (
     <div>
-        <section className="vh-100 custom-container d-flex justify-content-center align-items-center">
+        <section className="custom-container">
             <div className="container py-5 custom-container">
                 <div className="row justify-content-center">
+                    <div className="col-md-5">
+                        <img src={myImage} alt='Register Image' className='img-fluid custom-login-img' />
+                    </div>
+
                     <div className="col-md-4">
                         <div className="card card-registration ">
-                            <div className="card-body p-md-4 text-black custom-card-form">
+                            <div className="card-body p-md-5 text-black custom-card-form">
                                 <h3 className="mb-5 text-uppercase text-center">Login</h3>
 
                                 
@@ -139,7 +144,7 @@ export default function Login() {
                                                 {errors.email && <small className='text-danger'>{errors.email}</small>}
                                         </div>
                                     </div>
-                                    <div className="col-md mb-4">
+                                    <div className="col-md mb-5">
                                         <div className="form-outline">
                                             <label className="form-label" for="password">Password</label>
                                             <input type="password" id="passwordInput" className="form-control form-control-md" placeholder="Enter password" name='password' value={password} onChange={onInputChange}/>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import myImage from "../images/registerImage.jpg";
 
 export default function Registration() {
 
@@ -126,10 +127,13 @@ export default function Registration() {
 
   return (
     <div>
-        <section className="vh-100 custom-container d-flex justify-content-center align-items-center">
+        <section className="custom-container">
             <div className="container py-5 custom-container">
                 <div className="row justify-content-center">
-                    <div className="col-md-6">
+                    <div className="col-md-5">
+                        <img src={myImage} alt='Register Image' className='img-fluid custom-register-img' />
+                    </div>
+                    <div className="col-md-5">
                         <div className="card card-registration ">
                             <div className="card-body p-md-4 text-black custom-card-form">
                                 <h3 className="mb-4 text-uppercase text-center">Register</h3>
@@ -153,14 +157,14 @@ export default function Registration() {
                                 </div>
 
                                 <div className="row">
-                                    <div className="col-md-7 mb-4">
+                                    <div className="col-md-6 mb-4">
                                         <div className="form-outline">
                                                 <label className="form-label" for="email">Email</label>
                                                 <input type="email" id="emailInput" className="form-control form-control-md" placeholder="Enter email" name="email" value={email} onChange={onInputChange}/>
                                                 {errors.email && <small className='text-danger'>{errors.email}</small>}
                                         </div>
                                     </div>
-                                    <div className="col-md-5 mb-4">
+                                    <div className="col-md-6 mb-4">
                                         <div className="form-outline">
                                             <label className="form-label" for="password">Password</label>
                                             <input type="password" id="passwordInput" className="form-control form-control-md" placeholder="Enter password" name="password" value={password} onChange={onInputChange}/>
@@ -172,7 +176,7 @@ export default function Registration() {
 
                                 <div className="row">
 
-                                    <div className="col-md-7 mb-4">
+                                    <div className="col-md-12 mb-4">
                                         <div className="form-outline">
                                             <label className="form-label" for="streetName">Street Name</label>
                                             <input type="text" id="streetNameInput" className="form-control form-control-md" placeholder="Enter street name"  name="streetName" value={streetName} onChange={onInputChange}/>
@@ -180,7 +184,13 @@ export default function Registration() {
                                         </div>
                                     </div>
 
-                                    <div className="col-md-5 mb-4">
+                                </div>
+
+                                
+
+                                <div className="row justify-content-center">
+
+                                <div className="col-md-6 mb-4">
                                         <label className="form-label" for="locality">Locality</label>
                                         <select className="form-select" id="localityInput" name="locality" value={locality} onChange={onInputChange}>
                                             <option value="">Select Locality</option>
@@ -196,24 +206,19 @@ export default function Registration() {
                                         </select>
                                         {errors.locality && <small className='text-danger'>{errors.locality}</small>}
                                     </div>
-                            
-                                </div>
 
-
-
-                                <div className="row justify-content-center">
-                                    <div className="col-md-4 mb-4">
+                                    <div className="col-md-3 mb-4">
                                         <div className="form-outline">
                                             <label className="form-label" for="flatNo">Flat No.</label>
-                                            <input type="number" id="flatNumberInput" className="form-control form-control-md" placeholder="Enter Flat No." name="flatNo" value={flatNo} onChange={onInputChange}/>
+                                            <input type="number" id="flatNumberInput" className="form-control form-control-md" placeholder="Enter Flat No." name="flatNo" value={flatNo} onChange={onInputChange} min='0'/>
                                             {errors.flatNo && <small className='text-danger'>{errors.flatNo}</small>}
                                         </div>
                                     </div>
 
-                                    <div className="col-md-4 mb-4">
+                                    <div className="col-md-3 mb-4">
                                         <div className="form-outline">
-                                            <label className="form-label" for="apartmentNo">Apartment No.</label>
-                                            <input type="number" id="apartmentNumberInput" className="form-control form-control-md" placeholder="Enter Apartment No." name="apartmentNo" value={apartmentNo} onChange={onInputChange}/>
+                                            <label className="form-label" for="apartmentNo">Apart. No.</label>
+                                            <input type="number" id="apartmentNumberInput" className="form-control form-control-md" placeholder="Enter Apartment No." name="apartmentNo" value={apartmentNo} onChange={onInputChange} min='0'/>
                                             {errors.apartmentNo && <small className='text-danger'>{errors.apartmentNo}</small>}
                                         </div>
                                     </div>
