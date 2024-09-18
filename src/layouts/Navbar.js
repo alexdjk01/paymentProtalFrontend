@@ -26,6 +26,9 @@ export default function Navbar() {
     navigate('/');
   }
 
+  const handlerBackClick = () => {
+    navigate('/dashboard');
+  }
 
 
   return (
@@ -47,12 +50,16 @@ export default function Navbar() {
             </button>
 
             <div className="d-flex ms-auto pe-5">
-            {(location.pathname !== '/dashboard' && location.pathname!=='/dashboardAdmin') ? (
+            {(location.pathname === '/profile') ? (
+              <>
+              <button className="btn btn-outline-dark ms-3 custom-buttons-navbar" style={{ color: 'black' }} onClick={handlerBackClick}>Back</button>
+              </>
+            ): (location.pathname !== '/dashboard' && location.pathname!=='/dashboardAdmin') ? (
               <>
               <button className="btn btn-outline-dark ms-2 custom-buttons-navbar" style={{ color: 'black' }} onClick={handlerRegisterClick}>Register</button>
               <button className="btn btn-outline-dark ms-3 custom-buttons-navbar" style={{ color: 'black' }} onClick={handlerLoginClick}>Login</button>
               </>
-            ) : (
+            ): (
               <>
               <button className="btn btn-outline-dark ms-3 custom-buttons-navbar" style={{ color: 'black' }} onClick={handlerProfileClick}>Profile</button> 
               <button className="btn btn-outline-dark ms-3 custom-buttons-navbar" style={{ color: 'black' }} onClick={handlerLogoutClick}>Logout</button> 

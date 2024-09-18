@@ -9,6 +9,7 @@ import StartPage from './pages/StartPage';
 import Dashboard from './pages/Dashboard';
 import { AuthProvider } from './contexts/Authentification';
 import DashboardAdmin from './pages/DashboardAdmin';
+import Profile from './pages/Profile';
 
 // REgistration is registering the user into the postgres BD and redirects after save to Login.
 
@@ -28,6 +29,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/dashboardAdmin" element={<DashboardAdmin />} />
+            <Route path="/profile" element={<Profile />} />
           </Routes>
         </div>
       </AuthProvider>
