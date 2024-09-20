@@ -22,8 +22,8 @@ export default function StartPage() {
       <div className='custom-container-background'>
         <h1 className="display-5 mb-5 custom-h1-start-page">Welcome to Payment Portal</h1>
         <div className="container-fluid custom-container-start-page">
-          <p className='custom-text-start-page'>Activate your account now and save time! </p>
-          <p className='custom-secondary-text-start-page'>Enjoy instant payments for your everyday utilities in only a couple of seconds.</p>
+          <p className='custom-text-start-page'>Activate your account now and save precious time! </p>
+          <p className='custom-secondary-text-start-page'>Enjoy instant payments for your monthly utilities in only a couple of seconds.</p>
           <p className='custom-secondary-text-start-page'>Manage your water, electricity and gas bills in one go!</p>
 
             <div class="container custom-buttons-startPage-image">
