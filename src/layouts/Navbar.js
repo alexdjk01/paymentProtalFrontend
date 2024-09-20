@@ -37,7 +37,7 @@ export default function Navbar() {
 
         <nav className="navbar navbar-expand-lg custom-navbar">
         <div className="container-fluid pe-5">
-            <a className="navbar-brand " href="/" style={{ color: 'black' }} onClick={handlerLogoutClick}>Payment Portal Full Stack App</a>
+            <a className="navbar-brand " href="/" style={{ color: '#ffe06b', paddingLeft: '40px' , fontSize: '25px' }} onClick={handlerLogoutClick}>Payment Portal Full Stack App</a>
 
             <button 
                 className="navbar-toggler" 

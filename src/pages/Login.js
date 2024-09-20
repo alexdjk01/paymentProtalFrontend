@@ -19,9 +19,7 @@ export default function Login() {
 
     const{email, password}=user
 
-    const handlerBackClick = () =>{
-        navigate("/");
-    }
+ 
 
     const onInputChange = (e) => {
         setUser({ ...user, [e.target.name]: e.target.value });
@@ -55,6 +53,10 @@ export default function Login() {
       
         return adminEmailPattern.test(email);
       }
+
+    const  handlerRegisterClick = () => {
+        navigate('/register');
+    }
 
     const handlerLoginClick = async(e) =>{
         e.preventDefault();
@@ -134,30 +136,43 @@ export default function Login() {
                     <div className="col-md-4">
                         <div className="card card-registration ">
                             <div className="card-body p-md-5 text-black custom-card-form">
-                                <h3 className="mb-5 text-uppercase text-center">Login</h3>
+                                <h3 className="mb-5  text-center">Welcome to P-Portal</h3>
 
                                 
                                     <div className="col-md mb-4">
                                         <div className="form-outline">
-                                                <label className="form-label" for="email">Email</label>
+                                                
                                                 <input type="email" id="emailInput" className="form-control form-control-md" placeholder="Enter email" name="email" value={email} onChange={onInputChange}/>
                                                 {errors.email && <small className='text-danger'>{errors.email}</small>}
                                         </div>
                                     </div>
-                                    <div className="col-md mb-5">
+                                    <div className="col-md mb-3">
                                         <div className="form-outline">
-                                            <label className="form-label" for="password">Password</label>
+                                      
                                             <input type="password" id="passwordInput" className="form-control form-control-md" placeholder="Enter password" name='password' value={password} onChange={onInputChange}/>
                                             {errors.password && <small className='text-danger'>{errors.password}</small>}
                                         </div>
                                     </div>
 
+                                    <div className="d-flex justify-content-between align-items-center mb-4">
+                                        <div className="form-check">
+                                            <input className="form-check-input" type="checkbox" id="rememberEmailCheckbox" />
+                                            <label className="form-check-label" htmlFor="rememberEmailCheckbox">
+                                            Remember Email
+                                            </label>
+                                        </div>
+                                        
+                                        <a href="/forgot-password" className="text-primary">Forgot Password?</a>
+                                        </div>
 
-                                    <div className="d-flex justify-content-center">
-                                        <button type="reset" className="btn btn-danger btn-lg me-2" onClick={handlerBackClick}>Back</button>
-                                        <button type="submit" className="btn btn-success btn-lg" onClick={handlerLoginClick}>Login</button>
+                                    <div className="col-12 justify-content-center mb-3">
+                                        <button type="submit" className="btn custom-btn-login-form " onClick={handlerLoginClick}>Log in</button>
                                     </div>
-                                
+
+                                    <div className="d-flex justify-content-center align-items-center">
+                                        <h6 className="mb-3">New to Payment Portal?</h6>
+                                        <h6 className="mb-3 ms-1 text-primary" style={{ cursor: 'pointer' , textDecoration: 'underline' }} onClick={handlerRegisterClick}>Register</h6>
+                                    </div>
 
                             </div>
                         </div>
@@ -165,6 +180,8 @@ export default function Login() {
                 </div>
             </div>
         </section>
+        <p className='mt-5 custom-small-text'>Services may be provided by Payment Portal Financial Services or Portal Financial International Services, LLCST MMTSLS# 99999, which are licensed as Money Transmitters by the New York State Department of Financial Services.  See terms and conditions for details.</p>
+        <p className=' custom-small-text'>© 2024 Payment Portal Holdings, Inc. All Rights Reserved</p>
     </div>
   )
 }

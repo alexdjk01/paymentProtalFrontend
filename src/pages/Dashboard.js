@@ -3,6 +3,7 @@ import { useAuth } from '../contexts/Authentification'
 import axios from 'axios';
 import '../css/styles.css'
 import InvoiceCard from '../layouts/InvoiceCard';
+import myImage from '../images/dashboardPhotoo.jpg'
 
 //2 butoane 1. current invoice 2. history invoices -> in functie de timp ( billing period)
 
@@ -98,35 +99,73 @@ export default function Dashboard() {
  
   return (
     <div>
-       <h5>Welcome back, {userAuth.fullName}</h5>
+      <div className='custom-container-background'>
+        <div className='row'>
+          <div className='col-md-6'>
+            <div className='custom-dashboard-container'>
+              <h4 >Glad to have you back, {userAuth.fullName} !</h4>
+              <p>Here you can find all your invoices and you are provided with various methods of payment. </p>
+              <p>Inspect your monthly bill, browse through your old invoices if you need past informations, report an issue or select your favourite method of payment all in one single platform.</p>
+              
+             
 
-       <div className="d-flex justify-content-center mb-2 mt-4">
-                <button type="submit" className="btn btn-primary btn-lg me-2" onClick={handlerHistoryInvoices}>Past Invoices</button>
-                <button type="submit" className="btn btn-primary btn-lg" onClick={handlerCurrentInvoice}>Current Invoice</button>
-        </div>
 
-        {showCurrent && (
-         
-          <div>
-            {currentInvoices.map((invoice) => (
-              <InvoiceCard key={invoice.id} invoice={invoice} />
-            ))}
+              <div className='justify-content-start mx-5 my-3'>
+
+                <button type="submit" className="btn custom-btn-invoices" onClick={handlerHistoryInvoices}>Past Invoices</button>
+                <button type="submit" className="btn custom-btn-invoices mx-4" onClick={handlerCurrentInvoice}>Current Invoice</button>
+              </div>
+              <p>Get 5% cashback for your utility bills if you pay on time! </p>
+              <p className='mt-5'>Download the mobile application: </p>
+
+              <a href="https://www.kobinet.com.tr/" target="_blank" class="market-btn apple-btn" role="button">
+                <span class="market-button-subtitle">Download on the</span>
+                <span class="market-button-title">App Store</span>
+              </a>
+
+              <a href="https://www.kobinet.com.tr/" target="_blank" class="market-btn google-btn mx-3" role="button">
+                <span class="market-button-subtitle">Download on the</span>
+                <span class="market-button-title">Google Play</span>
+              </a>
+
+            
+             
+            </div>
           </div>
-        )}
+          <div className='col-md-6'>
+            <img src={myImage} alt='Register Image' className='img-fluid' />
+            
+          </div>
+        </div>
+        
 
-        {showHistory && (
-         <div className="d-flex flex-wrap ">
-         {historyInvoices.map((invoice, index) => (
-           <div
-             className="invoice-card-container"
-             key={invoice.id}
-             style={{ flex: '0 0 50%', maxWidth: '50%' }}
-           >
-             <InvoiceCard invoice={invoice} />
-           </div>
-         ))}
-       </div>
-        )}
+        
+
+          {showCurrent && (
+          
+            <div>
+              {currentInvoices.map((invoice) => (
+                <InvoiceCard key={invoice.id} invoice={invoice} />
+              ))}
+            </div>
+          )}
+
+          {showHistory && (
+          <div className="d-flex flex-wrap ">
+          {historyInvoices.map((invoice, index) => (
+            <div
+              className="invoice-card-container"
+              key={invoice.id}
+              style={{ flex: '0 0 50%', maxWidth: '50%' }}
+            >
+              <InvoiceCard invoice={invoice} />
+            </div>
+          ))}
+        </div>
+          )}
+      </div>
+      <p className='mt-5 custom-small-text'>Services may be provided by Payment Portal Financial Services or Portal Financial International Services, LLCST MMTSLS# 99999, which are licensed as Money Transmitters by the New York State Department of Financial Services.  See terms and conditions for details.</p>
+      <p className=' custom-small-text'>© 2024 Payment Portal Holdings, Inc. All Rights Reserved</p>
     </div>
   )
 }

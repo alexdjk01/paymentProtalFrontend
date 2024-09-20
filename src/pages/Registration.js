@@ -27,8 +27,8 @@ export default function Registration() {
         setUser({ ...user, [e.target.name]: e.target.value });
     };
 
-    const handerBackClick = () => {
-        navigate('/');
+    const handerLoginClick = () => {
+        navigate('/login');
     };
 
     const validateForm = () => {
@@ -136,7 +136,7 @@ export default function Registration() {
                     <div className="col-md-5">
                         <div className="card card-registration ">
                             <div className="card-body p-md-4 text-black custom-card-form">
-                                <h3 className="mb-4 text-uppercase text-center">Register</h3>
+                                <h3 className="mb-4  text-center">Create your account</h3>
 
 
                                 <div className="row">
@@ -225,10 +225,14 @@ export default function Registration() {
                                 </div>
 
 
-                                <div className="d-flex justify-content-center">
-                                    <button type="reset" className="btn btn-danger btn-lg me-2" onClick={handerBackClick}>Back</button>
-                                    <button type="submit" className="btn btn-success btn-lg" onClick={handerSaveClick}>Save</button>
-                                </div>
+                                <div className="col-12 justify-content-center mb-3">
+                                        <button type="submit" className="btn custom-btn-login-form " onClick={handerSaveClick}>Register</button>
+                                    </div>
+
+                                    <div className="d-flex justify-content-center align-items-center">
+                                        <h6 className="mb-3">Already have an account?</h6>
+                                        <h6 className="mb-3 ms-1 text-primary" style={{ cursor: 'pointer' , textDecoration: 'underline' }} onClick={handerLoginClick}>Login</h6>
+                                    </div>
 
 
                             </div>
@@ -237,6 +241,8 @@ export default function Registration() {
                 </div>
             </div>
         </section>
+        <p className='mt-5 custom-small-text'>Services may be provided by Payment Portal Financial Services or Portal Financial International Services, LLCST MMTSLS# 99999, which are licensed as Money Transmitters by the New York State Department of Financial Services.  See terms and conditions for details.</p>
+        <p className=' custom-small-text'>© 2024 Payment Portal Holdings, Inc. All Rights Reserved</p>
     </div>
   )
 }
