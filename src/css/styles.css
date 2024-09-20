@@ -102,10 +102,16 @@
 
 .custom-card
 {
-    width: 500px;
-    height: 600px;
+    width: 600px;
+    height: 650px;
     background-color: #f5ebc8c6;
 
+}
+
+.custom-bold-text-invoice{
+    margin-bottom: -5px;
+    font-weight: bold;
+    font-size: 15px;
 }
 
 .custom-dashboard-container{
@@ -117,6 +123,11 @@
 .custom-p-small
 {
     font-size: x-small;
+}
+
+.custom-p-invoice-small{
+    font-size: 12px;
+    margin-bottom: -5px;
 }
 
 .custom-container-admin-credentials{
@@ -132,9 +143,7 @@
     margin-left: -90px;
 }
 
-.custom-margin-top-minus-15px{
-    margin-top: -15px;
-}
+
 
 .custom-margin-top-minus-10px{
     margin-top: -10px;
@@ -157,6 +166,19 @@
 
   .custom-btn-login-form:hover{
     background-color:#7193FF ;
+  }
+
+  .custom-btn-invoice-form{
+    background-color: rgba(140, 188, 140, 0.808);
+    font-weight: bold;
+    color: white;
+    width: 150px;
+
+  }
+
+  .custom-btn-invoice-form:hover{
+    background-color: rgba(122, 234, 122, 0.808);
+    font-weight: bold;
   }
 
   .custom-small-text {
