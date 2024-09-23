@@ -4,6 +4,7 @@ import { useAuth } from '../contexts/Authentification'
 import axios from 'axios';
 import '../css/styles.css'
 import ProfileCredentials from '../layouts/ProfileCredentials'
+import PaymentInformation from '../layouts/PaymentInformation'
 
 export default function Profile() {
     const {userAuth} = useAuth();
@@ -33,8 +34,18 @@ export default function Profile() {
 
   return (
     <div>
-        <h3>PROFILE PAGE</h3>
-      <ProfileCredentials user = {user}/>
+      <div className='row'>
+        <div className='col-md-6 '>
+          <ProfileCredentials user = {user}/>
+        </div>
+
+        
+        <div className='col-md-6'>
+          <PaymentInformation user = {user}/>
+        </div>
+      </div>
+      
+      
     </div>
   )
 }

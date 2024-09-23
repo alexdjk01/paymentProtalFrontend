@@ -12,14 +12,14 @@
 }
 
 .custom-card-form{
-    background-color:#ffe06b ;
-    box-shadow: 0px 3px 8px rgba(79, 79, 80, 0.9); /* Shadow with horizontal offset, vertical offset, blur radius, and color */
-    border-radius: 8px; /* Optional: Adds rounded corners */
+    background-color:#fff ;
+    box-shadow: 0px 3px 8px rgba(79, 79, 80, 0.9); 
+    border-radius: 8px; 
     padding: 20px;
 }
 
 .custom-navbar{
-    background-color: #282c34b4;
+    background-color: #4f5156b4;
     border-bottom: 3px solid #ffe06b;
     font-weight: bold;
     height: 100px;
@@ -43,7 +43,7 @@
     font-weight: bold; /* Bold text */
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     text-align: left;
-    margin-left: 80px;
+    padding-left: 80px;
     padding-top: 40px;
 }
 
@@ -84,14 +84,14 @@
 }    
 
 .custom-container-background{
-    background-color: #ebece7;
+    background-color: #fff;
 }
 
 .custom-container-start-page{
     padding-bottom: 20px;
     padding-top: 40px;
     padding-left: 100px;
-    width:100vw;
+    width:98.93vw;
     height: 430px;
     text-align: center;
     background-image: url('../images/startPageImagev3.jpg'); /* Replace with your image URL */
@@ -104,9 +104,17 @@
 {
     width: 600px;
     height: 650px;
-    background-color: #f9f7dfc4;
+    background-color: #fff;
+    box-shadow: 0px 1px 3px rgba(79, 79, 80, 0.9); 
+    
 
 }
+
+
+.row {
+    margin-right: 0;
+    margin-left: 0;
+  }
 
 .custom-bold-text-invoice{
     margin-bottom: -5px;
@@ -215,7 +223,7 @@
     border: 1px solid #f5b7b7;
     border-radius: 10px;
     background-position: center left 0.75rem;
-    background-color: #ebece7;
+    background-color: #fff;
     background-size: 1.5rem 1.5rem;
     background-repeat: no-repeat;
     text-decoration: none;

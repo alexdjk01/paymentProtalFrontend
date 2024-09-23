@@ -51,7 +51,7 @@ export default function Dashboard() {
     const invoiceDate = new Date(year, month-1, day);
     const currentDate = new Date();
     const oneMonthAgoDate = new Date();
-    oneMonthAgoDate.setMonth(currentDate.getMonth()-1);
+    oneMonthAgoDate.setMonth(currentDate.getMonth()-2);
     return invoiceDate >= oneMonthAgoDate;
   }
 

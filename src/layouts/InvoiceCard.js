@@ -1,8 +1,12 @@
-import React, { useEffect } from "react";
-import { useAuth } from '../contexts/Authentification'
+import React, { useEffect, useState } from "react";
+import { useAuth } from '../contexts/Authentification';
+import axios from 'axios';
 
 const InvoiceCard = ({invoice}) => {
 
+    ////// RE-RENDER INVOICE AFTER CLICKING PAY OR REPORT SO IT SHOWS ALREADY PAID< ALREADY REORTED!
+
+    const [paid, setPaid] = useState(invoice.paid);
     const {userAuth} = useAuth();
 
     function calculateTotalForEach(a,b) {
@@ -51,12 +55,31 @@ const InvoiceCard = ({invoice}) => {
         
     }
 
-    const handlerPayment = () => {
-
+    const handlerPayment = async() => {
+        invoice.paid=true;
+        console.log(invoice);
+        try{
+            const updatedInvoice = await axios.put(`http://localhost:8080/invoices/${invoice.id}`, invoice);
+            console.log(updatedInvoice);
+            setPaid(true);
+        }
+        catch(e)
+        {
+            console.error("Invoice couldn't be updated: ", e);
+        }
     }
 
-    const handlerReport = () => {
-
+    const handlerReport = async() => {
+        invoice.reported=false;
+        console.log(invoice);
+        try{
+            const updatedInvoice = await axios.put(`http://localhost:8080/invoices/${invoice.id}`, invoice);
+            console.log(updatedInvoice);
+        }
+        catch(e)
+        {
+            console.error("Invoice couldn't be updated: ", e);
+        }
     }
 
     if(invoice)
@@ -167,12 +190,23 @@ const InvoiceCard = ({invoice}) => {
                             </div>
                         </div>
                        
-                        
-                     
-                        <div className="row justify-content-center mt-3">
-                            <div className="col-12 text-center mb-3">
-                                <button type="submit" className="btn custom-btn-invoice-form" onClick={handlerPayment}>Pay now</button>
+                        <>
+                        {invoice.paid ? (
+                            <div className="row justify-content-center mt-3">
+                                <div className="col-12 text-center mb-3">
+                                    <button disabled type="submit" className="btn custom-btn-invoice-form">Invoice paid</button>
+                                </div>
                             </div>
+                        ) : (
+                            <div className="row justify-content-center mt-3">
+                                <div className="col-12 text-center mb-3">
+                                    <button type="submit" className="btn custom-btn-invoice-form" onClick={handlerPayment}>Pay now</button>
+                                </div>
+                            </div>
+                        )}
+                        </>
+                        
+                        <div>
                             <div className="col-12 text-center">
                                 <p className="custom-bold-text-invoice" style={{ cursor: 'pointer', marginTop:"-10px" , color:"red"}} onClick={handlerReport}>Report an issue</p>
                             </div>

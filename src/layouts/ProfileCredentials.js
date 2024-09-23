@@ -174,7 +174,7 @@ const ProfileCredentials = ({user}) => {
                <section className="custom-container">
                     <div className="container py-3 custom-container">
                         <div className="row justify-content-center">
-                            <div className="col-md-5">
+                            <div className="col-md-8">
                                 <div className="card card-registration ">
                                     <div className="card-body p-md-4 text-black custom-card-form">
                                         <h3 className="mb-4 text-uppercase text-center">Edit credentials</h3>
@@ -198,14 +198,14 @@ const ProfileCredentials = ({user}) => {
                                         </div>
 
                                         <div className="row">
-                                            <div className="col-md-6 mb-4">
+                                            <div className="col-md-12 mb-4">
                                                 <div className="form-outline">
                                                         <label className="form-label" for="email">Email</label>
                                                         <input type="email" id="emailInput" className="form-control form-control-md" placeholder="Enter email" name="email" value={email} onChange={onInputChange}/>
                                                         {errors.email && <small className='text-danger'>{errors.email}</small>}
                                                 </div>
                                             </div>
-                                            <div className="col-md-6 mb-4">
+                                            <div className="col-md-12 mb-4">
                                                 <div className="form-outline">
                                                     <label className="form-label" for="password">Password</label>
                                                     <input type="text" id="passwordInput" className="form-control form-control-md" placeholder="Enter password" name="password" value={password} onChange={onInputChange}/>
@@ -264,6 +264,9 @@ const ProfileCredentials = ({user}) => {
                                                 </div>
                                             </div>
                                         </div>
+
+
+                                        
 
 
                                         <div className="d-flex justify-content-center">

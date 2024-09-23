@@ -212,6 +212,8 @@ export default function DashboardAdmin() {
             const waterPrice = waterPriceAdjust;
             const gasPrice = gasPriceAdjust;
             const energyPrice = electricityPriceAdjust;
+            const paid = false;
+            const reported=false;
     
             const finalInvoice = {
                 waterConsumption,
@@ -222,6 +224,8 @@ export default function DashboardAdmin() {
                 energyPrice,
                 billingPeriod,
                 titleInvoice,
+                paid,
+                reported,
                 user
             }
 
