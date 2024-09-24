@@ -34,17 +34,12 @@ export default function Profile() {
 
   return (
     <div>
-      <div className='row'>
-        <div className='col-md-6 '>
+      
+     
+        <div className='col-md-12'>
           <ProfileCredentials user = {user}/>
         </div>
-
-        
-        <div className='col-md-6'>
-          <PaymentInformation user = {user}/>
-        </div>
-      </div>
-      
+     
       
     </div>
   )
